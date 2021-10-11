@@ -3,24 +3,7 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import redis from 'redis'
 
-let FeedBackData = [{
-    "id": 1,
-    "name": "Abhishek Sharma",
-    "age": 39,
-    "feedback": "Note that the API is entirely asynchronous. To get data back from the server, you"
-},
-{
-    "id": 2,
-    "name": "Abhishek Sharma",
-    "age": 39,
-    "feedback": "Note that the API is entirely asynchronous. To get data back from the server, you"
-},
-{
-    "id": 3,
-    "name": "Abhishek Sharma",
-    "age": 39,
-    "feedback": "Note that the API is entirely asynchronous. To get data back from the server, you"
-}]
+let FeedBackData = []
 
 export default ({ app }) => {
     app.use(cors());
