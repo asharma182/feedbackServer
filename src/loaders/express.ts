@@ -25,8 +25,9 @@ export default ({ app }) => {
 
     app.post("/createFeedback", (req, res) => {
         console.log(req.body)
+        const _id = FeedBackData.length ===0 ? 1 : FeedBackData[FeedBackData.length-1].id + 1
         const feedback = {
-            "id": FeedBackData[FeedBackData.length-1].id + 1,
+            "id": _id,
             ...req.body
         }
         console.log(feedback)

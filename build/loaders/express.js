@@ -5,24 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
-let FeedBackData = [{
-        "id": 1,
-        "name": "Abhishek Sharma",
-        "age": 39,
-        "feedback": "Note that the API is entirely asynchronous. To get data back from the server, you"
-    },
-    {
-        "id": 2,
-        "name": "Abhishek Sharma",
-        "age": 39,
-        "feedback": "Note that the API is entirely asynchronous. To get data back from the server, you"
-    },
-    {
-        "id": 3,
-        "name": "Abhishek Sharma",
-        "age": 39,
-        "feedback": "Note that the API is entirely asynchronous. To get data back from the server, you"
-    }];
+let FeedBackData = [];
 exports.default = ({ app }) => {
     app.use((0, cors_1.default)());
     app.use(body_parser_1.default.json());
@@ -39,7 +22,8 @@ exports.default = ({ app }) => {
     });
     app.post("/createFeedback", (req, res) => {
         console.log(req.body);
-        const feedback = Object.assign({ "id": FeedBackData[FeedBackData.length - 1].id + 1 }, req.body);
+        const _id = FeedBackData.length === 0 ? 1 : FeedBackData[FeedBackData.length - 1].id + 1;
+        const feedback = Object.assign({ "id": _id }, req.body);
         console.log(feedback);
         FeedBackData.push(feedback);
         res.json({ message: "Saved Data" });
